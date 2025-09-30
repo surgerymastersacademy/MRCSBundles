@@ -90,20 +90,34 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .modal-overlay {
-            transition: opacity 0.3s ease;
-        }
-        .modal-content {
-            transition: transform 0.3s ease, opacity 0.3s ease;
-        }
-
         /* Accordion Styles */
         .accordion-content {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease-out, padding 0.3s ease-out;
         }
+
+        /* Loading Spinner */
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--color-accent);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
         
+        .floating-btn {
+            transition: all 0.3s ease;
+        }
+        .floating-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 <body class="bg-light-bg text-text-dark min-h-screen">
@@ -113,42 +127,42 @@
         <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-center md:text-left relative z-10">
             <div class="md:w-3/5">
                 <h1 class="text-4xl md:text-5xl font-black mb-4" style="color: var(--color-accent);">
-                    <i class="fas fa-atom mr-2"></i>
                     Master The MRCS Part A
                 </h1>
                 <p class="text-xl mb-6 text-gray-600">The Ultimate All-In-One Academy for MRCS Part A Success.</p>
-                 <!-- Announcement Section -->
-                <div class="bg-green-500 text-white p-6 rounded-2xl inline-block text-left shadow-2xl pulse max-w-lg">
-                    <h3 class="font-bold text-2xl mb-3 flex items-center"><i class="fas fa-bullhorn mr-3"></i>Special Upgrade Offer!</h3>
-                    <ul class="space-y-2 list-inside list-disc">
-                        <li><strong>Absolutely FREE</strong> for September 2025 candidates!</li>
-                        <li><strong>Exclusive Discount</strong> for January 2026 candidates.</li>
-                        <li><strong>New 2025/2026 Lecture Edition</strong> being generated.</li>
-                        <li><strong>Massive QBank Expansion</strong> coming soon.</li>
-                    </ul>
-                </div>
             </div>
             <div class="mt-8 md:mt-0 md:w-1/4">
-                <img src="https://github.com/surgerymastersacademy/MasterTheMRCS/blob/main/MTM%20Part%20A.png?raw=true" alt="Master The MRCS Part A Logo" class="mx-auto w-56 h-auto transition-transform duration-300 hover:scale-110" />
+                <img src="https://pub-852699c7f5ee45beb2e043db698f5b59.r2.dev/Academy%20-%20Clinic%20%26%20Pharmacy%20Logo/MTM%20Part%20A.png" alt="Master The MRCS Part A Logo" class="mx-auto w-56 h-auto transition-transform duration-300 hover:scale-110" />
             </div>
         </div>
     </header>
+
+    <!-- New Motivational Section -->
+    <section class="bg-gray-800 text-white -mt-1 relative z-20">
+        <div class="container mx-auto px-6 py-10 text-center">
+            <h2 class="text-3xl font-bold mb-3">Your Journey to MRCS Starts Now.</h2>
+            <p class="text-lg max-w-3xl mx-auto text-gray-300">We've built the ultimate ecosystem for your success: high-yield lectures, a massive QBank, and the revolutionary Smart Study Planner. Stop just studying—start mastering. Your future self will thank you.</p>
+        </div>
+    </section>
 
     <!-- Main Navigation Bar -->
     <nav class="main-nav shadow-lg">
         <div class="container mx-auto px-4">
             <div class="relative flex flex-wrap justify-center items-center gap-2 p-2 min-h-[4rem]">
                  <!-- Logo for larger screens -->
-                <div class="absolute left-0 top-1/2 -translate-y-1/2 hidden md:block">
-                    <img src="https://github.com/surgerymastersacademy/MasterTheMRCS/blob/main/MTM%20Part%20A.png?raw=true" alt="Master The MRCS Part A Logo" class="h-12 w-auto">
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 hidden lg:block">
+                     <a href="http://www.surgerymastersacademy.com" target="_blank" class="flex items-center gap-2 text-gray-600 hover:text-accent transition-colors">
+                        <img src="https://pub-852699c7f5ee45beb2e043db698f5b59.r2.dev/Academy%20-%20Clinic%20%26%20Pharmacy%20Logo/Surgery%20Masters%20Academy%20Logo%202024%20ED%203%20with%20white%20Circle.png" alt="Home Academy Logo" class="h-10 w-auto">
+                        <span class="font-bold text-sm">Home</span>
+                    </a>
                 </div>
                 
                 <button class="nav-button flex-auto px-4 py-3 text-sm font-bold rounded-full active" onclick="showPage('bundles')"><i class="fas fa-tags mr-2"></i>Bundles</button>
                 <button class="nav-button flex-auto px-4 py-3 text-sm font-bold rounded-full" onclick="showPage('exam-info')"><i class="fas fa-info-circle mr-2"></i>Exam Info</button>
                 <button class="nav-button flex-auto px-4 py-3 text-sm font-bold rounded-full" onclick="showPage('features')"><i class="fas fa-star mr-2"></i>Features</button>
+                <button class="nav-button flex-auto px-4 py-3 text-sm font-bold rounded-full" onclick="showPage('reviews')"><i class="fas fa-comments mr-2"></i>Reviews</button>
                 <button class="nav-button flex-auto px-4 py-3 text-sm font-bold rounded-full" onclick="showPage('about')"><i class="fas fa-user-tie mr-2"></i>About Us</button>
                 <button class="nav-button flex-auto px-4 py-3 text-sm font-bold rounded-full" onclick="showPage('faq')"><i class="fas fa-question-circle mr-2"></i>FAQ</button>
-                <button class="nav-button flex-auto px-4 py-3 text-sm font-bold rounded-full bg-blue-500 text-white hover:bg-blue-600" onclick="showPage('contact')"><i class="fab fa-telegram-plane mr-2"></i>Contact Us</button>
             </div>
         </div>
     </nav>
@@ -187,14 +201,14 @@
                             <div>
                                 <div class="flex items-center justify-between mb-2">
                                     <h4 class="font-bold text-xl text-accent">Part A: Written Examination</h4>
-                                    <img src="https://github.com/surgerymastersacademy/MasterTheMRCS/blob/main/MTM%20Part%20A.png?raw=true" alt="MRCS Part A Logo" class="w-20 h-auto">
+                                    <img src="https://pub-852699c7f5ee45beb2e043db698f5b59.r2.dev/Academy%20-%20Clinic%20%26%20Pharmacy%20Logo/MTM%20Part%20A.png" alt="MRCS Part A Logo" class="w-20 h-auto">
                                 </div>
                                 <p class="text-gray-600 mt-1">This is a five-hour single best answer (SBA) exam consisting of two papers taken on the same day. It's designed to test your knowledge of applied basic sciences and the principles of surgery in general.</p>
                             </div>
                             <div>
                                 <div class="flex items-center justify-between mb-2">
                                     <h4 class="font-bold text-xl text-accent">Part B: OSCE</h4>
-                                     <img src="https://github.com/surgerymastersacademy/MasterTheMRCS/blob/main/MTM%20Part%20B.png?raw=true" alt="MRCS Part B Logo" class="w-20 h-auto">
+                                     <img src="https://pub-852699c7f5ee45beb2e043db698f5b59.r2.dev/Academy%20-%20Clinic%20%26%20Pharmacy%20Logo/MTM%20Part%20B.png" alt="MRCS Part B Logo" class="w-20 h-auto">
                                 </div>
                                 <p class="text-gray-600 mt-1">This is a practical exam that assesses your knowledge and skills in a clinical setting. It consists of a series of stations where you'll be tested on clinical examination, communication, and procedural skills.</p>
                             </div>
@@ -271,8 +285,27 @@
             </div>
         </section>
 
+        <!-- Reviews Section -->
+        <section id="reviews" class="page-section bg-white">
+            <div class="container mx-auto px-4 py-20">
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl font-extrabold text-text-dark mb-4">
+                        What Our Students Say
+                    </h2>
+                    <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">Real stories from surgeons who passed with our guide.</p>
+                </div>
+                <div id="reviews-loader" class="flex justify-center items-center h-64">
+                    <div class="loader"></div>
+                </div>
+                <div id="reviews-container" class="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
+                    <!-- Reviews will be injected here by JS -->
+                </div>
+            </div>
+        </section>
+
+
         <!-- About Section -->
-        <section id="about" class="page-section bg-white">
+        <section id="about" class="page-section">
             <div class="py-20">
                 <div class="container mx-auto px-4">
                     <div class="max-w-4xl mx-auto bg-light-card rounded-xl shadow-lg overflow-hidden md:flex md:items-center">
@@ -305,7 +338,7 @@
         </section>
         
         <!-- FAQ Section -->
-        <section id="faq" class="page-section">
+        <section id="faq" class="page-section bg-white">
             <div class="py-20">
                 <div class="container mx-auto px-4 max-w-4xl">
                     <div class="text-center mb-12">
@@ -322,8 +355,8 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="page-section bg-white">
+        <!-- Contact Section (Hidden by default, used for footer link) -->
+        <section id="contact" class="page-section">
              <div class="py-20">
                 <div class="container mx-auto px-4 text-center">
                      <h2 class="text-4xl font-bold text-text-dark mb-4">
@@ -331,55 +364,10 @@
                         Connect With Us
                     </h2>
                     <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-10">Join our community, register for offers, and find all our resources in one place.</p>
-                    
-                    <!-- Registration Buttons -->
                     <div class="flex flex-col sm:flex-row justify-center gap-4 mb-16">
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd08G9YiIo9yeSncppocmy5-84vEQ3o2U9wrFBawIACzgFT7A/viewform?pli=1" target="_blank" class="inline-block bg-green-500 text-white font-bold py-4 px-8 rounded-full hover:bg-green-600 transition-all duration-300 text-lg shadow-lg pulse">
-                            <i class="fas fa-clipboard-list mr-2"></i> Free September Offer Registration
-                        </a>
                         <a href="https://t.me/DrBishoyAcademy" target="_blank" class="inline-block bg-yellow-500 text-gray-900 font-bold py-4 px-8 rounded-full hover:bg-yellow-400 transition-all duration-300 text-lg shadow-lg">
                             <i class="fas fa-star mr-2"></i> Inquire for Premium Plans
                         </a>
-                    </div>
-
-                    <!-- Link Cards -->
-                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto text-left">
-                        <!-- Official Channels -->
-                        <div class="bg-light-bg p-6 rounded-xl shadow-md">
-                            <h3 class="text-xl font-bold mb-4 border-b pb-2">Official Channels</h3>
-                            <div class="space-y-3">
-                                <a href="https://www.facebook.com/MasterTheMRCS" target="_blank" class="flex items-center text-gray-700 hover:text-accent font-semibold transition-colors"><i class="fab fa-facebook text-blue-600 w-6 mr-3 text-lg"></i> MTM Facebook Page</a>
-                                <a href="https://www.youtube.com/channel/UC4LJTw0KMEZ_7RPA_fxGY0g/featured?view_as=subscriber" target="_blank" class="flex items-center text-gray-700 hover:text-accent font-semibold transition-colors"><i class="fab fa-youtube text-red-600 w-6 mr-3 text-lg"></i> MTM YouTube Channel</a>
-                                <a href="https://t.me/MasterTheMRCS" target="_blank" class="flex items-center text-gray-700 hover:text-accent font-semibold transition-colors"><i class="fab fa-telegram-plane text-sky-500 w-6 mr-3 text-lg"></i> MTM Telegram Channel</a>
-                            </div>
-                        </div>
-
-                        <!-- Part A Groups -->
-                        <div class="bg-light-bg p-6 rounded-xl shadow-md">
-                            <h3 class="text-xl font-bold mb-4 border-b pb-2">Part A Study Groups</h3>
-                            <div class="space-y-3">
-                                <a href="https://www.facebook.com/groups/MasterTheMRCS" target="_blank" class="flex items-center text-gray-700 hover:text-accent font-semibold transition-colors"><i class="fab fa-facebook-f text-blue-600 w-6 mr-3 text-lg"></i> Part A Facebook Group</a>
-                                <a href="https://t.me/MasterTheMRCSPartA" target="_blank" class="flex items-center text-gray-700 hover:text-accent font-semibold transition-colors"><i class="fab fa-telegram-plane text-sky-500 w-6 mr-3 text-lg"></i> Part A Telegram Group</a>
-                            </div>
-                        </div>
-
-                        <!-- Part B Groups -->
-                         <div class="bg-light-bg p-6 rounded-xl shadow-md">
-                            <h3 class="text-xl font-bold mb-4 border-b pb-2">Part B Study Groups</h3>
-                            <div class="space-y-3">
-                                <a href="https://www.facebook.com/groups/188190089124401" target="_blank" class="flex items-center text-gray-700 hover:text-accent font-semibold transition-colors"><i class="fab fa-facebook-f text-blue-600 w-6 mr-3 text-lg"></i> Part B Facebook Group</a>
-                                <a href="https://t.me/joinchat/G847c3L9MdcZj2r-" target="_blank" class="flex items-center text-gray-700 hover:text-accent font-semibold transition-colors"><i class="fab fa-telegram-plane text-sky-500 w-6 mr-3 text-lg"></i> Part B Telegram Group</a>
-                            </div>
-                        </div>
-                        
-                        <!-- Associated Communities -->
-                        <div class="bg-light-bg p-6 rounded-xl shadow-md md:col-span-2 lg:col-span-3">
-                             <h3 class="text-xl font-bold mb-4 border-b pb-2">Associated Communities</h3>
-                             <div class="space-y-3">
-                                 <a href="https://www.facebook.com/groups/344635749625036/" target="_blank" class="flex items-center text-gray-700 hover:text-accent font-semibold transition-colors"><i class="fab fa-facebook text-blue-600 w-6 mr-3 text-lg"></i> Master General Surgery ASU Study Group</a>
-                             </div>
-                        </div>
-
                     </div>
                 </div>
             </div>
@@ -393,6 +381,7 @@
                 <a href="#bundles" onclick="showPage('bundles')" class="text-gray-400 hover:text-accent mx-3 transition-colors">Bundles</a>
                 <a href="#exam-info" onclick="showPage('exam-info')" class="text-gray-400 hover:text-accent mx-3 transition-colors">Exam Info</a>
                 <a href="#features" onclick="showPage('features')" class="text-gray-400 hover:text-accent mx-3 transition-colors">Features</a>
+                <a href="#reviews" onclick="showPage('reviews')" class="text-gray-400 hover:text-accent mx-3 transition-colors">Reviews</a>
                 <a href="#faq" onclick="showPage('faq')" class="text-gray-400 hover:text-accent mx-3 transition-colors">FAQ</a>
             </div>
             <div class="flex justify-center space-x-6 my-4">
@@ -406,161 +395,125 @@
         </div>
     </footer>
     
+    <!-- Floating Action Buttons -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-4">
+        <a href="https://masterthemrcsparta.surgerymastersacademy.com/" target="_blank" class="floating-btn w-16 h-16 bg-accent text-white rounded-full flex items-center justify-center shadow-lg" title="Take a Test Now">
+            <i class="fas fa-rocket text-2xl"></i>
+        </a>
+        <a href="https://t.me/DrBishoyAcademy" target="_blank" class="floating-btn w-16 h-16 bg-gray-700 text-white rounded-full flex items-center justify-center shadow-lg" title="Contact Us">
+            <i class="fab fa-telegram-plane text-2xl"></i>
+        </a>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script>
         // --- DATA SOURCE ---
-        const bundleData = [
-            {
-                title: 'QBank Bundle',
-                icon: 'fa-question-circle',
-                description: 'Gain access to our comprehensive and expanding question bank, designed to mirror the real exam.',
-                features: ['Thousands of SBAs', 'Detailed Explanations', 'Performance Analytics', 'Custom Quiz Builder'],
-                theme: 'blue',
-            },
-            {
-                title: 'Lectures Bundle',
-                icon: 'fa-video',
-                description: 'High-yield, concise video lectures covering the entire MRCS Part A curriculum.',
-                features: ['New 2025/2026 Edition', 'Covering All Topics', 'Downloadable Notes', 'Mobile-Friendly'],
-                theme: 'green',
-                isScaled: true,
-                highlight: 'Most Popular'
-            },
-            {
-                title: 'All-In-One Combo',
-                icon: 'fa-rocket',
-                description: 'The ultimate package. Full access to all lectures, the entire QBank, and exclusive bonus content.',
-                features: ['Includes QBank Bundle', 'Includes Lectures Bundle', 'Smart Study Planner', 'Mock Exams'],
-                theme: 'dark',
-                highlight: 'Best Value'
-            }
-        ];
-
-        const featuresData = [
-            { icon: "fas fa-brain", title: "Smart Study Planner", text: "Generates an automated study plan with daily and cumulative tests, analyzing your performance to identify strengths and weaknesses." },
-            { icon: "fas fa-pencil-ruler", title: "Realistic Exam Simulation", text: "Experience the real exam environment with timed mock tests or create your own custom quizzes." },
-            { icon: "fas fa-redo-alt", title: "Intelligent Mistake Review", text: "The system gathers all your incorrect answers into a single test to help you focus on and master your weak points." },
-            { icon: "fas fa-sync-alt", title: "Constantly Updated Content", text: "Our content is regularly updated to align with the latest curriculum and international guidelines." },
-            { icon: "fas fa-chart-line", title: "Performance Tracking", text: "A comprehensive activity log and visual charts show your progress, with a leaderboard to foster healthy competition." },
-            { icon: "fas fa-book-reader", title: "High-Yield Lectures", text: "Concise, focused video lectures that cut through the noise and deliver exactly what you need to know for the exam." }
-        ];
-
-        const faqData = [
-            { q: "How do I sign up for the free offer for September candidates?", a: "Simply contact us on Telegram! Our team will verify your exam date and grant you full access to all available content completely free of charge." },
-            { q: "What will the discount be for January candidates?", a: "The exact discount percentage will be announced soon. Join our Telegram channel to be the first to know. It will be a substantial discount to reward early adopters!" },
-            { q: "When will the new lecture series and QBank be finished?", a: "Our team is working tirelessly. The new 2025/2026 lecture edition is being rolled out chapter by chapter, and the QBank expansion is an ongoing process with new questions added weekly. Full completion is expected well before the January 2026 exam." },
-            { q: "Can I use my account on multiple devices?", a: "Yes, you can log in from any device (PC, phone, tablet). However, for security, you cannot use the account on more than one device simultaneously." },
-        ];
+        const bundleData = [ { title: 'QBank Bundle', icon: 'fa-question-circle', description: 'Gain access to our comprehensive and expanding question bank, designed to mirror the real exam.', features: ['Thousands of SBAs', 'Detailed Explanations', 'Performance Analytics', 'Custom Quiz Builder'], theme: 'blue', }, { title: 'Lectures Bundle', icon: 'fa-video', description: 'High-yield, concise video lectures covering the entire MRCS Part A curriculum.', features: ['New 2025/2026 Edition', 'Covering All Topics', 'Downloadable Notes', 'Mobile-Friendly'], theme: 'green', isScaled: true, highlight: 'Most Popular' }, { title: 'All-In-One Combo', icon: 'fa-rocket', description: 'The ultimate package. Full access to all lectures, the entire QBank, and exclusive bonus content.', features: ['Includes QBank Bundle', 'Includes Lectures Bundle', 'Smart Study Planner', 'Mock Exams'], theme: 'dark', highlight: 'Best Value' } ];
+        const featuresData = [ { icon: "fas fa-brain", title: "Smart Study Planner", text: "Generates an automated study plan with daily and cumulative tests, analyzing your performance to identify strengths and weaknesses." }, { icon: "fas fa-pencil-ruler", title: "Realistic Exam Simulation", text: "Experience the real exam environment with timed mock tests or create your own custom quizzes." }, { icon: "fas fa-redo-alt", title: "Intelligent Mistake Review", text: "The system gathers all your incorrect answers into a single test to help you focus on and master your weak points." }, { icon: "fas fa-sync-alt", title: "Constantly Updated Content", text: "Our content is regularly updated to align with the latest curriculum and international guidelines." }, { icon: "fas fa-chart-line", title: "Performance Tracking", text: "A comprehensive activity log and visual charts show your progress, with a leaderboard to foster healthy competition." }, { icon: "fas fa-book-reader", title: "High-Yield Lectures", text: "Concise, focused video lectures that cut through the noise and deliver exactly what you need to know for the exam." } ];
+        const faqData = [ { q: "How do I sign up for the free offer for September candidates?", a: "Simply contact us on Telegram! Our team will verify your exam date and grant you full access to all available content completely free of charge." }, { q: "What will the discount be for January candidates?", a: "The exact discount percentage will be announced soon. Join our Telegram channel to be the first to know. It will be a substantial discount to reward early adopters!" }, { q: "When will the new lecture series and QBank be finished?", a: "Our team is working tirelessly. The new 2025/2026 lecture edition is being rolled out chapter by chapter, and the QBank expansion is an ongoing process with new questions added weekly. Full completion is expected well before the January 2026 exam." }, { q: "Can I use my account on multiple devices?", a: "Yes, you can log in from any device (PC, phone, tablet). However, for security, you cannot use the account on more than one device simultaneously." }, ];
         
+        // --- REVIEWS LOGIC ---
+        const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbzFRcSBiblGwsDT-doTFVtAAZYVVzZgfHKIXLU0htBEPUa_5zolpXLtChPp1UupoTZ1vw/exec';
+        let reviewsLoaded = false;
+
+        async function fetchAndDisplayReviews() {
+            if (reviewsLoaded) return;
+
+            try {
+                const response = await fetch(GOOGLE_SHEET_URL);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const reviewsData = await response.json();
+
+                // FIX: Check if the received data is an array before proceeding.
+                if (!Array.isArray(reviewsData)) {
+                    console.error("Expected an array of reviews, but received an object:", reviewsData);
+                    throw new Error("Invalid data format received from the server. Please ensure the Google Sheet is named 'Platform_Reviews'.");
+                }
+
+                const reviewsContainer = document.getElementById('reviews-container');
+                reviewsContainer.innerHTML = ''; // Clear loader
+
+                reviewsData.forEach(review => {
+                    if (!review.quote) return; // Skip empty rows
+
+                    const reviewEl = document.createElement('div');
+                    reviewEl.className = 'bg-light-card p-6 rounded-xl shadow-md break-inside-avoid-column';
+                    reviewEl.innerHTML = `
+                        <div class="flex items-start mb-4">
+                            <img src="${review.avatarUrl}" alt="${review.initials}" class="w-14 h-14 rounded-full mr-4 border-2 border-gray-200">
+                            <div>
+                                <p class="font-bold text-lg">${review.initials}</p>
+                                <p class="text-sm text-gray-500">${review.title}, ${review.country}</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600">"${review.quote}"</p>
+                    `;
+                    reviewsContainer.appendChild(reviewEl);
+                });
+                reviewsLoaded = true;
+            } catch (error) {
+                console.error('Error fetching reviews:', error);
+                const reviewsContainer = document.getElementById('reviews-container');
+                reviewsContainer.innerHTML = `<p class="text-center text-red-500 col-span-full">Could not load reviews. Please check the script URL, and ensure the Google Sheet is named 'Platform_Reviews' and has 'Anyone' access in the script deployment.</p>`;
+            } finally {
+                 document.getElementById('reviews-loader').style.display = 'none';
+            }
+        }
+
         // --- RENDERING FUNCTIONS ---
         function createBundleCardHTML(bundle) {
-            const isDark = bundle.theme === 'dark';
-            const theme = bundle.theme || 'gray';
-            const isScaled = bundle.isScaled || false;
-            
-            const scaleClass = isScaled ? 'lg:scale-105' : '';
-            const cardBg = isDark ? 'bg-gray-800 text-white' : 'bg-white text-gray-800';
-            const buttonClass = isDark ? 'bg-yellow-500 hover:bg-yellow-600 text-gray-900' : `bg-${theme}-600 hover:bg-${theme}-700 text-white`;
-            const borderColor = isDark ? 'border-yellow-400' : `border-${theme}-500`;
-            const highlightText = bundle.highlight ? `<div class="absolute -top-4 left-1/2 transform -translate-x-1/2 ${isDark ? 'bg-yellow-400 text-gray-900' : `bg-${theme}-500 text-white`} px-4 py-1 rounded-full text-xs font-bold shadow-lg">${bundle.highlight}</div>` : '';
-
-
-            const featuresHTML = bundle.features.map(feature => `
-                <li class="flex items-center">
-                    <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                    <span>${feature}</span>
-                </li>
-            `).join('');
-
-            return `
-                <div class="${cardBg} rounded-xl shadow-lg p-8 card-hover border-t-8 ${borderColor} text-center flex flex-col h-full relative ${scaleClass}">
-                    ${highlightText}
-                    <div class="mb-6">
-                        <i class="fas ${bundle.icon} text-5xl ${isDark ? 'text-yellow-400' : `text-${theme}-500`}"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3 ${bundle.highlight ? 'mt-4' : ''}">${bundle.title}</h3>
-                    <p class="${isDark ? 'text-gray-300' : 'text-gray-600'} mb-6 flex-grow">${bundle.description}</p>
-                    <ul class="text-left space-y-3 mb-8">
-                        ${featuresHTML}
-                    </ul>
-                    <div class="mt-auto">
-                        <a href="#contact" onclick="showPage('contact')" class="w-full block ${buttonClass} py-3 rounded-lg font-bold transition-colors text-lg opacity-80 cursor-not-allowed">
-                            Coming Soon
-                        </a>
-                        <p class="text-xs mt-2 ${isDark ? 'text-gray-400' : 'text-gray-500'}">Full Details & Pricing to be Announced!</p>
-                    </div>
-                </div>`;
+            const isDark = bundle.theme === 'dark'; const theme = bundle.theme || 'gray'; const isScaled = bundle.isScaled || false; const scaleClass = isScaled ? 'lg:scale-105' : ''; const cardBg = isDark ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'; const buttonClass = isDark ? 'bg-yellow-500 hover:bg-yellow-600 text-gray-900' : `bg-${theme}-600 hover:bg-${theme}-700 text-white`; const borderColor = isDark ? 'border-yellow-400' : `border-${theme}-500`; const highlightText = bundle.highlight ? `<div class="absolute -top-4 left-1/2 transform -translate-x-1/2 ${isDark ? 'bg-yellow-400 text-gray-900' : `bg-${theme}-500 text-white`} px-4 py-1 rounded-full text-xs font-bold shadow-lg">${bundle.highlight}</div>` : ''; const featuresHTML = bundle.features.map(feature => `<li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i><span>${feature}</span></li>`).join('');
+            return `<div class="${cardBg} rounded-xl shadow-lg p-8 card-hover border-t-8 ${borderColor} text-center flex flex-col h-full relative ${scaleClass}">${highlightText}<div class="mb-6"><i class="fas ${bundle.icon} text-5xl ${isDark ? 'text-yellow-400' : `text-${theme}-500`}"></i></div><h3 class="text-2xl font-bold mb-3 ${bundle.highlight ? 'mt-4' : ''}">${bundle.title}</h3><p class="${isDark ? 'text-gray-300' : 'text-gray-600'} mb-6 flex-grow">${bundle.description}</p><ul class="text-left space-y-3 mb-8">${featuresHTML}</ul><div class="mt-auto"><a href="#contact" onclick="showPage('contact')" class="w-full block ${buttonClass} py-3 rounded-lg font-bold transition-colors text-lg opacity-80 cursor-not-allowed">Coming Soon</a><p class="text-xs mt-2 ${isDark ? 'text-gray-400' : 'text-gray-500'}">Full Details & Pricing to be Announced!</p></div></div>`;
         }
 
         function createFeatureHTML(feature) {
-             return `
-                <div class="text-center p-8 bg-light-bg rounded-xl card-hover">
-                    <div class="bg-accent text-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg" style="background: var(--color-accent);">
-                        <i class="${feature.icon} text-3xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-text-dark mb-3">${feature.title}</h3>
-                    <p class="text-gray-600">${feature.text}</p>
-                </div>`;
+             return `<div class="text-center p-8 bg-light-bg rounded-xl card-hover"><div class="bg-accent text-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg" style="background: var(--color-accent);"><i class="${feature.icon} text-3xl"></i></div><h3 class="text-2xl font-bold text-text-dark mb-3">${feature.title}</h3><p class="text-gray-600">${feature.text}</p></div>`;
         }
 
         function createFaqItemHTML(faqItem) {
-            return `
-                <div class="bg-light-card rounded-lg overflow-hidden shadow-sm">
-                    <button class="w-full text-left p-6 flex justify-between items-center accordion-toggle">
-                        <h3 class="font-bold text-lg text-text-dark">${faqItem.q}</h3>
-                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="p-6 pt-0 text-gray-600">
-                            <p>${faqItem.a}</p>
-                        </div>
-                    </div>
-                </div>
-            `;
+            return `<div class="bg-light-card rounded-lg overflow-hidden shadow-sm"><button class="w-full text-left p-6 flex justify-between items-center accordion-toggle"><h3 class="font-bold text-lg text-text-dark">${faqItem.q}</h3><i class="fas fa-chevron-down transition-transform duration-300"></i></button><div class="accordion-content"><div class="p-6 pt-0 text-gray-600"><p>${faqItem.a}</p></div></div></div>`;
         }
         
         function renderAll() {
             const bundleContainer = document.getElementById('bundle-cards');
-            if(bundleContainer) {
-                bundleContainer.innerHTML = bundleData.map(createBundleCardHTML).join('');
-            }
-            
+            if(bundleContainer) { bundleContainer.innerHTML = bundleData.map(createBundleCardHTML).join(''); }
             const featuresContainer = document.getElementById('features-grid');
-            if(featuresContainer) {
-                featuresContainer.innerHTML = featuresData.map(createFeatureHTML).join('');
-            }
-
+            if(featuresContainer) { featuresContainer.innerHTML = featuresData.map(createFeatureHTML).join(''); }
             const faqContainer = document.getElementById('faq-accordion');
             if(faqContainer) {
                 faqContainer.innerHTML = faqData.map(createFaqItemHTML).join('');
                 document.querySelectorAll('.accordion-toggle').forEach(button => {
                     button.addEventListener('click', () => {
-                        const content = button.nextElementSibling;
-                        button.querySelector('i').classList.toggle('rotate-180');
-                        if (content.style.maxHeight) {
-                            content.style.maxHeight = null;
-                        } else {
-                            content.style.maxHeight = content.scrollHeight + "px";
-                        } 
+                        const content = button.nextElementSibling; button.querySelector('i').classList.toggle('rotate-180');
+                        if (content.style.maxHeight) { content.style.maxHeight = null; } else { content.style.maxHeight = content.scrollHeight + "px"; } 
                     });
                 });
             }
-
             document.getElementById('current-year').textContent = new Date().getFullYear();
         }
 
         // --- EVENT LISTENERS & INITIALIZATION ---
-        document.addEventListener('DOMContentLoaded', renderAll);
+        document.addEventListener('DOMContentLoaded', () => {
+             renderAll();
+             if(document.getElementById('reviews').classList.contains('active')) {
+                fetchAndDisplayReviews();
+             }
+        });
 
         function showPage(pageId) {
             document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
             const newPage = document.getElementById(pageId);
             if(newPage) newPage.classList.add('active');
             
-            // Handle nav button active state only if the click came from a nav button
             if (event && event.currentTarget && event.currentTarget.classList.contains('nav-button')) {
                  document.querySelectorAll('.nav-button').forEach(el => el.classList.remove('active'));
                  event.currentTarget.classList.add('active');
+            }
+            
+            if (pageId === 'reviews') {
+                fetchAndDisplayReviews();
             }
             
             window.scrollTo(0, 0); 
